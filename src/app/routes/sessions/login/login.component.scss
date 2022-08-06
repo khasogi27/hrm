@@ -1,0 +1,22 @@
+.mat-card {
+  max-width: 400px;
+  padding: 40px;
+}
+
+.mat-card-header .mat-card-title {
+  margin-bottom: 30px;
+  font-size: 30px;
+}
+
+.mat-card-header {
+  justify-content: center;
+}
+
+.container-login {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  margin: 6% auto;
+}
