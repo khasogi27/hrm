@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@auth/auth.service';
-import { LocalService } from '@share/services/local.service';
 
 @Component({
   selector: 'app-login',
@@ -10,19 +9,26 @@ import { LocalService } from '@share/services/local.service';
 })
 export class LoginComponent implements OnInit {
 
-  private user1: string = "ogi";
+  private user: { email: string, password: string };
+  public form: FormGroup;
+  public hidePass: boolean = true;
 
   constructor(
     private authService: AuthService,
-    private localService: LocalService
-  ) { }
+    private builder: FormBuilder
+  ) { 
+    this.form = this.builder.group({
+      email: ["", Validators.required],
+      password: ["", Validators.required]
+    });
+  }
 
   ngOnInit(): void {
-    this.localService.saveData("Sessions", this.user1);
   }
 
   onLogin() {
-    this.authService.login();
+    this.user = this.form.value;
+    this.authService.login(this.user);
   }
 
 }

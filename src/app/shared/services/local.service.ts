@@ -9,7 +9,7 @@ export class LocalService {
 
   constructor() { }
 
-  saveData(key: string, value: string) {
+  saveData(key: string, value: any) {
     localStorage.setItem(key, value);
   }
 

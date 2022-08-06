@@ -7,16 +7,30 @@ import { LocalService } from '@share/services/local.service';
 })
 export class AuthService {
 
+  private sessions: string = "userSessions";
+  private user: { email: string, password: string } = {
+    email: 'khasogi27@live.com',
+    password: 'rahasia'
+  }
+
   constructor(
     private router: Router,
     private localService: LocalService
   ) { }
 
-  login() {
+  login(args: { email: string, password: string }) {
+    if (JSON.stringify(args) !==JSON.stringify(this.user)) {
+      return;
+    }
+    this.localService.saveData(this.sessions, args);
     this.router.navigate(["employee"]);
   }
 
+  logout() {
+    this.localService.removeData(this.sessions);
+  }
+
   getToken() {
-    return this.localService.getData("Sessions")
+    return this.localService.getData(this.sessions);
   }
 }
