@@ -28,6 +28,7 @@ export class AuthService {
 
   logout() {
     this.localService.removeData(this.sessions);
+    this.router.navigate(["login"]);
   }
 
   getToken() {

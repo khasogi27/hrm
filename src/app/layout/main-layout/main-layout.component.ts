@@ -7,14 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainLayoutComponent implements OnInit {
 
-  events: string[] = [];
-  opened: boolean;
-
-  shouldRun = /(^|.)(stackblitz|webcontainer).(io|com)$/.test(window.location.host);
-
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }
