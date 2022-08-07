@@ -1,1 +1,20 @@
-<p>employee-detail works!</p>
+<div class="employee-container">
+  <h1>{{ employeeStatus }} Employee</h1>
+  
+  <div class="button-container">
+    <div class="button-content">
+      <button mat-icon-button
+        (click)="onBack()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <button mat-icon-button color="primary"
+        (click)="onSave()">
+        <mat-icon>save</mat-icon>
+      </button>
+    </div>
+    <span style="flex: auto 1 1;"></span>
+  </div>
+
+  <div class="add-container">
+  </div>
+</div>

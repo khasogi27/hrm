@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AuthService } from '@auth/auth.service';
+import { AuthService, sessions } from '@auth/auth.service';
+import { LocalService } from '@share/services/local.service';
 
 @Component({
   selector: 'app-header',
@@ -8,10 +9,19 @@ import { AuthService } from '@auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
   @Input() itemSide: any;
+
+  public user: any;
   
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+  ) { }
 
   ngOnInit(): void {
+    this.getUser();
+  }
+
+  getUser() {
+    this.user = this.authService.getUser();
   }
 
   onToggle() {

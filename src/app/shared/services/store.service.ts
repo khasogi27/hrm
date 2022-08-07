@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Employee } from '@share/interfaces/employee';
+import { Employee, EmployeeDetail } from '@share/interfaces/employee';
 import { LocalService } from './local.service';
 
-const employees: Employee = {
+const employees: EmployeeDetail = {
   id: 0,
   username: "khasogi27",
   firstName: "khasougi",
@@ -30,10 +30,10 @@ export class StoreService {
 
   setDataStore() {
     let dataLength: number = 100;
-    let arrData: Employee[] = [];
+    let arrData: EmployeeDetail[] = [];
 
     for (let i = 0; i < dataLength; i++) {
-      let objData: Employee = { 
+      let objData: EmployeeDetail = { 
         id: employees.id += 1,
         username: employees.username + employees.id,
         firstName: employees.firstName + employees.id,

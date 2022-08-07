@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from '@share/interfaces/user';
 import { LocalService } from '@share/services/local.service';
+
+export let sessions: string = "userSessions";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private sessions: string = "userSessions";
-  private user: { email: string, password: string } = {
-    email: 'khasogi27@live.com',
-    password: 'rahasia'
+  private user: User = {
+    email: 'admin@gmail.com',
+    password: 'admin'
   }
 
   constructor(
@@ -18,20 +20,24 @@ export class AuthService {
     private localService: LocalService
   ) { }
 
-  login(args: { email: string, password: string }) {
-    if (JSON.stringify(args) !==JSON.stringify(this.user)) {
+  login(args: User) {
+    if (JSON.stringify(args) !== JSON.stringify(this.user)) {
       return;
     }
-    this.localService.saveData(this.sessions, args);
+    this.localService.saveData(sessions, JSON.stringify(args));
     this.router.navigate(["employee"]);
   }
 
   logout() {
-    this.localService.removeData(this.sessions);
+    this.localService.removeData(sessions);
     this.router.navigate(["login"]);
   }
 
   getToken() {
-    return this.localService.getData(this.sessions);
+    return this.localService.getData(sessions);
+  }
+
+  getUser() {
+    return JSON.parse(this.getToken());
   }
 }

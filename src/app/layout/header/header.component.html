@@ -5,9 +5,17 @@
   </button>
   <span>Empoyee Management System</span>
   <span style="flex: auto 1 1;"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon"
-    (click)="onLogout()">
-    <!-- <mat-icon>account_circle</mat-icon> -->
-    <mat-icon>logout</mat-icon>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>account_circle</mat-icon>
   </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item disabled>
+      <mat-icon>account_circle</mat-icon>
+      <span>{{ user.email }}</span>
+    </button>
+    <button mat-menu-item (click)="onLogout()">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
 </mat-toolbar>
