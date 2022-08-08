@@ -12,7 +12,7 @@ export class AuthService {
 
   private user: User = {
     email: 'admin@gmail.com',
-    password: 'admin'
+    password: 'rahasia'
   }
 
   constructor(
