@@ -54,4 +54,8 @@ export class EmployeeListComponent implements OnInit, AfterViewInit {
     this.router.navigate(["employee/" + event.id]);
   }
 
+  onAdd() {
+    this.router.navigate(["employee/" + "new"]);
+  }
+
 }

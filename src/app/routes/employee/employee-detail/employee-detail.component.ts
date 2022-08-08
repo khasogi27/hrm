@@ -26,14 +26,18 @@ export class EmployeeDetailComponent implements OnInit {
 
   getDetailEmployee() {
     this.route.paramMap.subscribe(param => {
+      if (param.get('id') == "new") {
+        this.employeeStatus = "Add";
+        return;
+      }
+      this.employeeStatus = "View";
       this.employeeId.id = Number(param.get('id'));
-      if (this.employeeId.id) this.employeeStatus = "Edit";
       this.storeService.getDataStore().filter((e: EmployeeDetail) => {
         if (e.id == this.employeeId.id) {
           this.employeeDetail = e;
           return;
         }
-      })
+      });
     });
   }
 

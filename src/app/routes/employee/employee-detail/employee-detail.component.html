@@ -7,10 +7,12 @@
         (click)="onBack()">
         <mat-icon>arrow_back</mat-icon>
       </button>
-      <button mat-icon-button color="primary"
-        (click)="onSave()">
-        <mat-icon>save</mat-icon>
-      </button>
+      <ng-container *ngIf="employeeStatus == 'Add'">
+        <button mat-icon-button color="primary"
+          (click)="onSave()">
+          <mat-icon>save</mat-icon>
+        </button>
+      </ng-container>
     </div>
     <span style="flex: auto 1 1;"></span>
   </div>
