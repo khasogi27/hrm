@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AuthService, sessions } from '@auth/auth.service';
-import { LocalService } from '@share/services/local.service';
+import { AuthService } from '@auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -25,7 +24,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onToggle() {
-    this.itemSide.onToggle();
+    // this.itemSide.onToggle();
   }
 
   onLogout() {

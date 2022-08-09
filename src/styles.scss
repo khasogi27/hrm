@@ -13,3 +13,12 @@ $theme: mat-light-theme($primary, $accent);
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: transparent;
+}
+
+// .mat-paginator-outer-container {
+//   display: flex;
+//   overflow-x: auto;
+//   position: fixed;
+// }

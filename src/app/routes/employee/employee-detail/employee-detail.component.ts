@@ -15,6 +15,7 @@ export class EmployeeDetailComponent implements OnInit {
   public employeeDetail: EmployeeDetail;
   public form: FormGroup;
   public isEdit: boolean = false;
+  public isReadonly: boolean = true;
 
   constructor(
     private router: Router,
@@ -45,6 +46,7 @@ export class EmployeeDetailComponent implements OnInit {
     this.route.paramMap.subscribe(param => {
       if (param.get('id') == "new") {
         this.employeeStatus = "Add";
+        this.isReadonly = false;
         return;
       }
       this.employeeStatus = "View";

@@ -13,6 +13,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatMenuModule } from '@angular/material/menu'; 
 import { MatTooltipModule } from '@angular/material/tooltip'; 
+import { MatDatepickerModule } from '@angular/material/datepicker'; 
+import { MatSortModule } from '@angular/material/sort'; 
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatPaginatorModule,
     MatSnackBarModule,
     MatMenuModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDatepickerModule,
+    MatSortModule
   ],
   providers: [
     {
