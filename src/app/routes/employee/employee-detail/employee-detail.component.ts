@@ -1,21 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+import { MAT_DATE_FORMATS, DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EmployeeDetail } from '@share/interfaces/employee';
 import { StoreService } from '@share/services/store.service';
+import * as _moment from 'moment';
+import { DATE_FORMATS } from 'src/app/material.module';
+const moment = _moment;
 
 @Component({
   selector: 'app-employee-detail',
   templateUrl: './employee-detail.component.html',
-  styleUrls: ['./employee-detail.component.scss']
+  styleUrls: ['./employee-detail.component.scss'],
+  providers: [
+    { provide: MAT_DATE_FORMATS, useValue: DATE_FORMATS },
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]},
+    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } }
+  ]
 })
 export class EmployeeDetailComponent implements OnInit {
   public employeeStatus: string;
   public employeeId: any = {};
-  public employeeDetail: EmployeeDetail;
   public form: FormGroup;
   public isEdit: boolean = false;
   public isReadonly: boolean = true;
+
+  public date = moment();
 
   constructor(
     private router: Router,
@@ -39,7 +49,6 @@ export class EmployeeDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDetailEmployee();
-    console.log(this.employeeDetail, 'detail');
   }
 
   getDetailEmployee() {
@@ -49,14 +58,16 @@ export class EmployeeDetailComponent implements OnInit {
         this.isReadonly = false;
         return;
       }
+
       this.employeeStatus = "View";
       this.isEdit = true;
       this.employeeId.id = Number(param.get('id'));
       this.storeService.getDataStore().filter((e: any) => {
         if (e.id == this.employeeId.id) {
-          let numToString = e.basicSalary.toString();
-          numToString = this.formatCurrency(e.basicSalary)
-          e.basicSalary = numToString;
+          let dateConvert = this.formatDate(e.birthDate);
+          e.birthDate = dateConvert;
+          let currenConvert = this.formatCurrency(e.basicSalary);
+          e.basicSalary = currenConvert;
           this.form.patchValue(e);
           return;
         }
@@ -68,6 +79,16 @@ export class EmployeeDetailComponent implements OnInit {
     let resNum: string;
     resNum = new Intl.NumberFormat(['ban', 'id']).format(args)
     return 'Rp. ' + resNum;
+  }
+
+  formatDate(args: any) {
+    let resDate = moment(args.split('-').map(Number).reverse());
+    return resDate;
+  }
+
+  addDatePicker(type: string, event: any) {
+    this.date = moment(event.value);
+    console.log(this.date.format('DD-MM-YYYY'), 'date');
   }
 
   onBack() {

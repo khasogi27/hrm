@@ -15,6 +15,20 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip'; 
 import { MatDatepickerModule } from '@angular/material/datepicker'; 
 import { MatSortModule } from '@angular/material/sort'; 
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from "@angular/material-moment-adapter"
+
+export const DATE_FORMATS = {
+    parse: {
+        dateInput: 'DD/MM/YYYY',
+    },
+    display: {
+        dateInput: 'DD/MM/YYYY',
+        monthYearLabel: 'MMMM YYYY',
+        dateA11yLabel: 'LL',
+        monthYearA11yLabel: 'MMMM YYYY'
+    },
+};
 
 
 @NgModule({
@@ -33,12 +47,14 @@ import { MatSortModule } from '@angular/material/sort';
     MatMenuModule,
     MatTooltipModule,
     MatDatepickerModule,
-    MatSortModule
+    MatSortModule,
+    MatMomentDateModule
   ],
   providers: [
-    {
-      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' }
-    }
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
+    { provide: MAT_DATE_FORMATS, useValue: DATE_FORMATS },
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]},
+    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } }
   ]
 })
 export class MaterialModule { }
