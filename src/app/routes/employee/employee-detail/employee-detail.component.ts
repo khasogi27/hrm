@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeDetail } from '@share/interfaces/employee';
 import { StoreService } from '@share/services/store.service';
@@ -12,12 +13,28 @@ export class EmployeeDetailComponent implements OnInit {
   public employeeStatus: string;
   public employeeId: any = {};
   public employeeDetail: EmployeeDetail;
+  public form: FormGroup;
+  public isEdit: boolean = false;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private storeService: StoreService
-  ) { }
+    private storeService: StoreService,
+    private builder: FormBuilder
+  ) { 
+    this.form = this.builder.group({
+      id: [""],
+      username: [""],
+      firstName: [""],
+      lastName: [""],
+      email: [""],
+      birthDate: [""],
+      basicSalary: [""],
+      status: [""],
+      group: [""],
+      description: [""],
+    });
+  }
 
   ngOnInit(): void {
     this.getDetailEmployee();
@@ -31,14 +48,24 @@ export class EmployeeDetailComponent implements OnInit {
         return;
       }
       this.employeeStatus = "View";
+      this.isEdit = true;
       this.employeeId.id = Number(param.get('id'));
-      this.storeService.getDataStore().filter((e: EmployeeDetail) => {
+      this.storeService.getDataStore().filter((e: any) => {
         if (e.id == this.employeeId.id) {
-          this.employeeDetail = e;
+          let numToString = e.basicSalary.toString();
+          numToString = this.formatCurrency(e.basicSalary)
+          e.basicSalary = numToString;
+          this.form.patchValue(e);
           return;
         }
       });
     });
+  }
+
+  formatCurrency(args: number) {
+    let resNum: string;
+    resNum = new Intl.NumberFormat(['ban', 'id']).format(args)
+    return 'Rp. ' + resNum;
   }
 
   onBack() {

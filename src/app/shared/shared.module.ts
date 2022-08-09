@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material.module';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 const MODULES: any[] = [
   CommonModule,
@@ -12,6 +13,7 @@ const MODULES: any[] = [
   FormsModule,
   HttpClientModule,
   MaterialModule,
+  FlexLayoutModule,
   ReactiveFormsModule.withConfig({
     warnOnNgModelWithFormControl: 'never'
   })

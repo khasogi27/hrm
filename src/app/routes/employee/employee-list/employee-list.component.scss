@@ -11,13 +11,8 @@ table {
 
 .mat-form-field {
   font-size: 14px;
-  width: 20%;
-}
-
-@media (width: 450px) {
-  .mat-form-field {
-    width: 50%;
-  }
+  width: 100%;
+  padding-top: 0 !important;
 }
 
 td, th {
@@ -46,6 +41,7 @@ td, th {
 
 .button-container {
   display: flex;
+  margin: 0 12px;
 }
 
 .button-content {

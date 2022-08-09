@@ -1,5 +1,6 @@
 .button-container {
   display: flex;
+  margin: 0 12px;
 }
 
 .button-content {
@@ -8,4 +9,18 @@
 
 .mat-button-base {
   margin: 8px 8px 8px 0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.button-info-content {
+  padding-top: .75em
+}
+
+.input-full-width {
+  width: 100%;
+  margin: 0 12px;
 }

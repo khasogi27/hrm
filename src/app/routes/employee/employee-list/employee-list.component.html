@@ -1,5 +1,5 @@
 <div class="employee-container">
-  <h1>Employee List</h1>
+  <span class="mat-display-1">Employee List</span>
 
   <div class="button-container">
     <div class="button-content">
@@ -17,10 +17,12 @@
       </button>
     </div>
     <span style="flex: auto 1 1;"></span>
-    <mat-form-field appearance="standard">
-      <mat-label>Search</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. developer76" #input>
-    </mat-form-field>
+    <div class="button-content">
+      <mat-form-field appearance="standard">
+        <mat-label>Search</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. developer76" #input>
+      </mat-form-field>
+    </div>
   </div>
 
   <div class="table-container">

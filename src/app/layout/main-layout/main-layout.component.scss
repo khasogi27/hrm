@@ -1,3 +1,13 @@
+.mat-drawer-container {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+  display: block;
+  overflow: hidden;
+  height: 100%;
+}
+
 .container-main {
   display: flex;
   flex-direction: column;
