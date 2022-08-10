@@ -42,7 +42,7 @@ export class StoreService {
         birthDate: employees.birthDate,
         basicSalary: employees.basicSalary += employees.id,
         status: employees.status + employees.id,
-        group: employees.group + employees.id,
+        group: employees.group + ' ' + employees.id,
         description: employees.description + employees.id
       }
       arrData.push(objData);

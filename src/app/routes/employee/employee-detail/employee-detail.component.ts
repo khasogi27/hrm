@@ -22,10 +22,10 @@ export class EmployeeDetailComponent implements OnInit {
   public employeeStatus: string;
   public employeeId: any = {};
   public form: FormGroup;
+  public date = moment();
+  public dsGroup: string[] = [ "group 1", "group 2", "group 3", "group 4", "group 5" ];
   public isEdit: boolean = false;
   public isReadonly: boolean = true;
-
-  public date = moment();
 
   constructor(
     private router: Router,
@@ -97,6 +97,10 @@ export class EmployeeDetailComponent implements OnInit {
 
   onSave() {
 
+  }
+
+  compareFunction(o1: any, o2: any) {
+    return o1 == o2;
   }
 
 }

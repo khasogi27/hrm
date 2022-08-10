@@ -1,14 +1,14 @@
-<div class="employee-container">
+<div class="employee-detail-container">
   <span class="mat-display-1 title-head">{{ employeeStatus }} Employee</span>
   
   <div class="button-container">
     <div class="button-content">
-      <button mat-icon-button
+      <button mat-icon-button 
         (click)="onBack()">
         <mat-icon>arrow_back</mat-icon>
       </button>
       <ng-container *ngIf="!isEdit">
-        <button mat-icon-button color="primary"
+        <button mat-icon-button color="primary" 
           (click)="onSave()">
           <mat-icon>save</mat-icon>
         </button>
@@ -23,58 +23,73 @@
   </div>
 
   <div class="add-container">
-    <form [formGroup]='form'>
-      <div fxLayout="row" fxLayout.lt-sm="column" fxLayout.sm="column">
-        <mat-form-field class="input-full-width" appearance="fill" *ngIf="isEdit">
-          <mat-label>ID</mat-label>
-          <input matInput name="id" formControlName="id" [readonly]="isReadonly">
-        </mat-form-field>
-        <mat-form-field class="input-full-width" appearance="fill">
-          <mat-label>User Name</mat-label>
-          <input matInput name="username" formControlName="username" [readonly]="isReadonly">
-        </mat-form-field>
-        <mat-form-field class="input-full-width" appearance="fill">
-          <mat-label>First Name</mat-label>
-          <input matInput name="firstName" formControlName="firstName" [readonly]="isReadonly">
-        </mat-form-field>
-        <mat-form-field class="input-full-width" appearance="fill">
-          <mat-label>Last Name</mat-label>
-          <input matInput name="lastName" formControlName="lastName" [readonly]="isReadonly">
-        </mat-form-field>
-        <mat-form-field class="input-full-width" appearance="fill">
-          <mat-label>Email</mat-label>
-          <input matInput name="email" formControlName="email" [readonly]="isReadonly">
-        </mat-form-field>
-      </div>
-
-      <div fxLayout="row" fxLayout.lt-sm="column" fxLayout.sm="column">
-        <mat-form-field class="input-full-width" appearance="fill">
-          <mat-label>Birth Date</mat-label>
-          <input matInput [matDatepicker]="picker" name="birthDate" formControlName="birthDate" [readonly]="isReadonly"
-            (dateInput)="addDatePicker('input', $event)" (dateChange)="addDatePicker('change', $event)">
-          <mat-hint>MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle matSuffix [for]="picker" [disabled]="isReadonly"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field class="input-full-width" appearance="fill">
-          <mat-label>Basic Salary</mat-label>
-          <input type="text" matInput name="basicSalary" formControlName="basicSalary" [readonly]="isReadonly">
-        </mat-form-field>
-        <mat-form-field class="input-full-width" appearance="fill">
-          <mat-label>Status</mat-label>
-          <input matInput name="status" formControlName="status" [readonly]="isReadonly">
-        </mat-form-field>
-        <mat-form-field class="input-full-width" appearance="fill">
-          <mat-label>Group</mat-label>
-          <input matInput name="group" formControlName="group" [readonly]="isReadonly">
-        </mat-form-field>
-        <mat-form-field class="input-full-width" appearance="fill">
-          <mat-label>Description</mat-label>
-          <input matInput name="description" formControlName="description" [readonly]="isReadonly">
-        </mat-form-field>
-      </div>
-
-    </form>
+    <mat-card class="mat-card">
+      <mat-card-content>
+        <form [formGroup]='form'>
+          <div fxLayout="row" fxLayout.lt-sm="column" fxLayout.sm="column">
+            <mat-form-field class="input-full-width" appearance="fill" *ngIf="isEdit">
+              <mat-label>ID</mat-label>
+              <input matInput name="id" formControlName="id" [readonly]="isReadonly">
+            </mat-form-field>
+            <mat-form-field class="input-full-width" appearance="fill">
+              <mat-label>User Name</mat-label>
+              <input matInput name="username" formControlName="username" [readonly]="isReadonly">
+              <mat-hint *ngIf="!isEdit">jondu</mat-hint>
+            </mat-form-field>
+            <mat-form-field class="input-full-width" appearance="fill">
+              <mat-label>First Name</mat-label>
+              <input matInput name="firstName" formControlName="firstName" [readonly]="isReadonly">
+              <mat-hint *ngIf="!isEdit">jhone</mat-hint>
+            </mat-form-field>
+            <mat-form-field class="input-full-width" appearance="fill">
+              <mat-label>Last Name</mat-label>
+              <input matInput name="lastName" formControlName="lastName" [readonly]="isReadonly">
+              <mat-hint *ngIf="!isEdit">doe</mat-hint>
+            </mat-form-field>
+            <mat-form-field class="input-full-width" appearance="fill">
+              <mat-label>Email</mat-label>
+              <input matInput name="email" formControlName="email" [readonly]="isReadonly">
+              <mat-hint *ngIf="!isEdit">jhone@mail.com</mat-hint>
+            </mat-form-field>
+          </div>
+    
+          <div fxLayout="row" fxLayout.lt-sm="column" fxLayout.sm="column">
+            <mat-form-field class="input-full-width" appearance="fill">
+              <mat-label>Birth Date</mat-label>
+              <input matInput [matDatepicker]="picker" name="birthDate" formControlName="birthDate" [readonly]="isReadonly"
+                (dateInput)="addDatePicker('input', $event)" (dateChange)="addDatePicker('change', $event)">
+                <mat-hint *ngIf="!isEdit">MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker" *ngIf="!isEdit"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="input-full-width" appearance="fill">
+              <mat-label>Basic Salary</mat-label>
+              <input type="text" matInput name="basicSalary" formControlName="basicSalary" [readonly]="isReadonly">
+              <mat-hint *ngIf="!isEdit">30000000</mat-hint>
+            </mat-form-field>
+            <mat-form-field class="input-full-width" appearance="fill">
+              <mat-label>Status</mat-label>
+              <input matInput name="status" formControlName="status" [readonly]="isReadonly">
+              <mat-hint *ngIf="!isEdit">Contract</mat-hint>
+            </mat-form-field>
+            <mat-form-field class="input-full-width" appearance="fill">
+              <mat-label>Group</mat-label>
+              <input matInput name="group" formControlName="group" [readonly]="isReadonly" *ngIf="isReadonly">
+              <mat-select *ngIf="!isReadonly" formControlName="group" [compareWith]="compareFunction">
+                <mat-option *ngFor="let item of dsGroup" [value]="item">{{ item }}</mat-option>
+              </mat-select>
+              <mat-hint *ngIf="!isEdit">Group 1</mat-hint>
+            </mat-form-field>
+            <mat-form-field class="input-full-width" appearance="fill">
+              <mat-label>Description</mat-label>
+              <input matInput name="description" formControlName="description" [readonly]="isReadonly">
+              <mat-hint *ngIf="!isEdit">Bla Blabla</mat-hint>
+            </mat-form-field>
+          </div>
+    
+        </form>
+      </mat-card-content>
+    </mat-card>
   </div>
 
 </div>

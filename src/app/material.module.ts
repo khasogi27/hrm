@@ -15,8 +15,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip'; 
 import { MatDatepickerModule } from '@angular/material/datepicker'; 
 import { MatSortModule } from '@angular/material/sort'; 
+import { MatSelectModule } from '@angular/material/select';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from "@angular/material-moment-adapter"
+import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from "@angular/material-moment-adapter"
 
 export const DATE_FORMATS = {
     parse: {
@@ -48,7 +49,8 @@ export const DATE_FORMATS = {
     MatTooltipModule,
     MatDatepickerModule,
     MatSortModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    MatSelectModule
   ],
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
