@@ -18,10 +18,14 @@ export class SnackbarComponent implements OnInit {
       this.openDeleteBar();
     } else if (actionType == 'edit') {
       this.openEditBar()
+    } else if (actionType == 'error') {
+      this.openErrorBar();
+    } else if (actionType == 'success') {
+      this.openSuccessBar();
     }
   }
 
-  openDeleteBar() {
+  private openDeleteBar() {
     const message = 'Delete success';
     const action = 'Close';
     let option = {
@@ -31,12 +35,32 @@ export class SnackbarComponent implements OnInit {
     this.snackBar.open(message, action, option);
   }
 
-  openEditBar() {
+  private openEditBar() {
     const message = 'Edit success';
     const action = 'Close';
     const option = {
       duration: 2000,
       panelClass: ['mat-toolbar', 'mat-accent']
+    }
+    this.snackBar.open(message, action, option);
+  }
+
+  private openErrorBar() {
+    const message = 'Email & Passwords do NOT match';
+    const action = 'Close';
+    const option = {
+      duration: 2000,
+      panelClass: ['mat-toolbar', 'mat-warn']
+    }
+    this.snackBar.open(message, action, option);
+  }
+
+  private openSuccessBar() {
+    const message = 'Login Success';
+    const action = 'Close';
+    const option = {
+      duration: 2000,
+      panelClass: ['mat-toolbar', 'mat-primary']
     }
     this.snackBar.open(message, action, option);
   }

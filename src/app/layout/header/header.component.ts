@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AuthService } from '@auth/auth.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { AuthService } from '@auth/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  @Input() itemSide: any;
+  @Output() toggleSidenav = new EventEmitter<void>();
 
   public user: any;
   
@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onToggle() {
-    // this.itemSide.onToggle();
+    this.toggleSidenav.emit();
   }
 
   onLogout() {

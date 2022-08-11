@@ -17,7 +17,7 @@ export class EmployeeListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
   public pageSizeCount: number[] = [5, 10, 25, 100];
-  public displayedColumns: string[] = [ "id", "username", "firstName", "lastName", "email" ];
+  public displayedColumns: string[] = ["username", "firstName", "lastName", "email" ];
   public dataSource: MatTableDataSource<Employee>;
   
   constructor(

@@ -1,5 +1,5 @@
 <div class="container-main">
-  <app-header [itemSide]="sideNav"></app-header>
+  <app-header (toggleSidenav)="sideNav.onSideToggle()"></app-header>
 
   <mat-sidenav-container>
     <app-sidenav #sideNav></app-sidenav>

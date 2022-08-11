@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '@share/interfaces/user';
 import { LocalService } from '@share/services/local.service';
+import { StateService } from '@share/services/state.service';
 
 export let sessions: string = "userSessions";
 
@@ -17,15 +18,18 @@ export class AuthService {
 
   constructor(
     private router: Router,
-    private localService: LocalService
+    private localService: LocalService,
+    private stateService: StateService
   ) { }
 
   login(args: User) {
     if (JSON.stringify(args) !== JSON.stringify(this.user)) {
+      this.stateService.openSnackBar('error');
       return;
     }
     this.localService.saveData(sessions, JSON.stringify(args));
     this.router.navigate(["employee"]);
+    this.stateService.openSnackBar('success');
   }
 
   logout() {
