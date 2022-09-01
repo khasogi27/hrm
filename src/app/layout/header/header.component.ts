@@ -9,6 +9,7 @@ import { AuthService } from '@auth/auth.service';
 export class HeaderComponent implements OnInit {
   @Output() toggleSidenav = new EventEmitter<void>();
 
+  public titleHead: string = 'HRM';
   public user: any;
   
   constructor(
