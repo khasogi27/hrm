@@ -43,7 +43,7 @@ export class EmployeeDetailComponent implements OnInit {
       basicSalary: [""],
       status: [""],
       group: [""],
-      description: [""],
+      desc: [""],
     });
   }
 

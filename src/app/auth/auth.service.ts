@@ -27,18 +27,18 @@ export class AuthService {
       this.stateService.openSnackBar('error');
       return;
     }
-    this.localService.saveData(sessions, JSON.stringify(args));
-    this.router.navigate(["employee"]);
+    this.localService.saveSessions(sessions, JSON.stringify(args));
+    this.router.navigateByUrl("employee");
     this.stateService.openSnackBar('success');
   }
 
   logout() {
-    this.localService.removeData(sessions);
+    this.localService.removeSession(sessions);
     this.router.navigate(["login"]);
   }
 
   getToken() {
-    return this.localService.getData(sessions);
+    return this.localService.getSession(sessions);
   }
 
   getUser() {

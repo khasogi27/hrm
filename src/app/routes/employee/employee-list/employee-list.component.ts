@@ -41,12 +41,12 @@ export class EmployeeListComponent implements OnInit, AfterViewInit {
   }
 
   onDelete() {
-    let actionType: string = 'delete';
+    const actionType: string = 'delete';
     this.stateService.openSnackBar(actionType);
   }
 
   onEdit() {
-    let actionType: string = 'edit';
+    const actionType: string = 'edit';
     this.stateService.openSnackBar(actionType);
   }
 

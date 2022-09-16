@@ -16,5 +16,5 @@ export interface EmployeeDetail {
   basicSalary: number,
   status: string,
   group: string,
-  description: string,
+  desc: string,
 }

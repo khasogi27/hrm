@@ -12,7 +12,7 @@ const employees: EmployeeDetail = {
   basicSalary: 5000000,
   status: "Contact",
   group: "group",
-  description: "fullstack developer"
+  desc: "fullstack developer"
 }
 
 @Injectable({
@@ -43,7 +43,7 @@ export class StoreService {
         basicSalary: employees.basicSalary += employees.id,
         status: employees.status + employees.id,
         group: employees.group + ' ' + employees.id,
-        description: employees.description + employees.id
+        desc: employees.desc + employees.id
       }
       arrData.push(objData);
     }

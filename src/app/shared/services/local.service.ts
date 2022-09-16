@@ -24,4 +24,16 @@ export class LocalService {
   deleteData() {
     localStorage.clear();
   }
+
+  saveSessions(key: string, value: any) {
+    sessionStorage.setItem(key, value);
+  }
+
+  getSession(key: string) {
+    return sessionStorage.getItem(key);
+  }
+
+  removeSession(key: string) {
+    sessionStorage.removeItem(key);
+  }
 }

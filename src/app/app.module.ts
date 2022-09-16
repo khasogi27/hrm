@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from '@share/shared.module';
 import { LayoutModule } from './layout/layout.module';
 import { AuthModule } from '@auth/auth.module';
+import { HttpClientModule } from '@angular/common/http'
 
 const MODULES: any[] = [
   BrowserModule,
@@ -14,7 +15,8 @@ const MODULES: any[] = [
   BrowserAnimationsModule,
   LayoutModule,
   SharedModule,
-  AuthModule
+  AuthModule,
+  HttpClientModule 
 ]
 
 @NgModule({
