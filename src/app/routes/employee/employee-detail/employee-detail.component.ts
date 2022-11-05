@@ -43,7 +43,7 @@ export class EmployeeDetailComponent implements OnInit {
       basicSalary: [""],
       status: [""],
       group: [""],
-      desc: [""],
+      description: [""],
     });
   }
 
@@ -77,7 +77,7 @@ export class EmployeeDetailComponent implements OnInit {
 
   formatCurrency(args: number) {
     let resNum: string;
-    resNum = new Intl.NumberFormat(['ban', 'id']).format(args)
+    resNum = new Intl.NumberFormat(['ban', 'id']).format(args);
     return 'Rp. ' + resNum;
   }
 

@@ -4,7 +4,7 @@ import { User } from '@share/interfaces/user';
 import { LocalService } from '@share/services/local.service';
 import { StateService } from '@share/services/state.service';
 
-export let sessions: string = "userSessions";
+export const SESSION_KEY: string = "userSessions";
 
 @Injectable({
   providedIn: 'root'
@@ -23,25 +23,29 @@ export class AuthService {
   ) { }
 
   login(args: User) {
-    if (JSON.stringify(args) !== JSON.stringify(this.user)) {
+    const dataUser = JSON.stringify(args);
+    if (dataUser !== JSON.stringify(this.user)) {
       this.stateService.openSnackBar('error');
       return;
     }
-    this.localService.saveSessions(sessions, JSON.stringify(args));
+    this.localService.saveSessions(SESSION_KEY, dataUser);
     this.router.navigateByUrl("employee");
     this.stateService.openSnackBar('success');
   }
 
   logout() {
-    this.localService.removeSession(sessions);
+    this.localService.removeSession(SESSION_KEY);
     this.router.navigate(["login"]);
   }
 
   getToken() {
-    return this.localService.getSession(sessions);
+    return this.localService.getSession(SESSION_KEY);
   }
 
   getUser() {
-    return JSON.parse(this.getToken());
+    const user = this.getToken();
+    if (user) {
+      return JSON.parse(user);
+    };
   }
 }
