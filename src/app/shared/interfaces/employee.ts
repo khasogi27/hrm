@@ -1,6 +1,6 @@
 export interface Employee {
   id: number,
-  username: string,
+  userName: string,
   firstName: string,
   lastName: string,
   email: string,
@@ -8,7 +8,7 @@ export interface Employee {
 
 export interface EmployeeDetail {
   id: number,
-  username: string,
+  userName: string,
   firstName: string,
   lastName: string,
   email: string,

@@ -4,7 +4,7 @@ import { LocalService } from './local.service';
 
 const employees: EmployeeDetail = {
   id: 0,
-  username: "khasogi27",
+  userName: "khasogi27",
   firstName: "khasougi",
   lastName: "badru zaman",
   email: "khasogi27@live.com",
@@ -35,7 +35,7 @@ export class StoreService {
     for (let i = 0; i < dataLength; i++) {
       let objData: EmployeeDetail = { 
         id: employees.id += 1,
-        username: employees.username + employees.id,
+        userName: employees.userName + employees.id,
         firstName: employees.firstName + employees.id,
         lastName: employees.lastName + employees.id,
         email: employees.email + employees.id,

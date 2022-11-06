@@ -35,7 +35,7 @@ export class EmployeeDetailComponent implements OnInit {
   ) { 
     this.form = this.builder.group({
       id: [""],
-      username: [""],
+      userName: [""],
       firstName: [""],
       lastName: [""],
       email: [""],
@@ -43,7 +43,7 @@ export class EmployeeDetailComponent implements OnInit {
       basicSalary: [""],
       status: [""],
       group: [""],
-      description: [""],
+      desc: [""],
     });
   }
 

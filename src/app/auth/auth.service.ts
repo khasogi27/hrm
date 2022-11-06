@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '@share/interfaces/user';
+import { User, Users } from '@share/interfaces/user';
+import { ApiService } from '@share/services/api.service';
 import { LocalService } from '@share/services/local.service';
 import { StateService } from '@share/services/state.service';
+import { filter, map } from 'rxjs';
 
 export const SESSION_KEY: string = "userSessions";
 
@@ -16,15 +18,17 @@ export class AuthService {
     password: 'rahasia'
   }
 
+
   constructor(
     private router: Router,
     private localService: LocalService,
-    private stateService: StateService
+    private stateService: StateService,
   ) { }
 
-  login(args: User) {
+  login(args: { email: string, password: string }) {
     const dataUser = JSON.stringify(args);
-    if (dataUser !== JSON.stringify(this.user)) {
+    const accsUser = JSON.stringify(this.user);
+    if (dataUser !== accsUser) {
       this.stateService.openSnackBar('error');
       return;
     }

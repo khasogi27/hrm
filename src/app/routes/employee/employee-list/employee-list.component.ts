@@ -4,8 +4,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Employee } from '@share/interfaces/employee';
+import { ApiService } from '@share/services/api.service';
 import { StateService } from '@share/services/state.service';
-import { StoreService } from '@share/services/store.service';
 
 @Component({
   selector: 'app-employee-list',
@@ -17,22 +17,24 @@ export class EmployeeListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
   public pageSizeCount: number[] = [5, 10, 25, 100];
-  public displayedColumns: string[] = ["username", "firstName", "lastName", "email" ];
+  public displayedColumns: string[] = ["userName", "firstName", "lastName", "email" ];
   public dataSource: MatTableDataSource<Employee>;
   
   constructor(
-    private storeService: StoreService,
     private stateService: StateService,
-    private router: Router
+    private router: Router,
+    private apiService: ApiService
   ) { }
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource(this.storeService.getDataStore());
+    this.apiService.getAllEmployees().subscribe((res: Employee[]) => {
+      this.dataSource = new MatTableDataSource(res);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
   }
-
+  
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event) {
